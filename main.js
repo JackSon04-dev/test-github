@@ -1,4 +1,4 @@
-function checkPassWord(a) {
+function checkPassword(a) {
   let aa = false;
   let aA = false;
   let a1 = false;
@@ -15,14 +15,9 @@ function checkPassWord(a) {
   }
   return aa && aA && a1 && a.length >= 6;
 }
-function isValidPassword(a) {
-  let hasLower = /[a-z]/.test(a);
-  let hasUpper = /[A-Z]/.test(a);
-  let hasNumber = /[0-9]/.test(a);
-  return hasLower && hasUpper && hasNumber && password.length >= 6;
-}
+
 let a = prompt("Mời nhập mật khẩu");
-while (!isValidPassword(a)) {
+while (!checkPassword(a)) {
   alert(` Vui lòng nhập mật khẩu có:
     1. Ít nhất 1 chữ thường.
     2. Ít nhất 1 chữ hoa.
