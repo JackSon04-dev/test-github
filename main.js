@@ -55,16 +55,32 @@ function setUsername() {
     return setUsername(); // Yêu cầu nhập lại nếu tên đăng nhập không hợp lệ
   }
 }
-//khai báo biến đựng giá trị password and username
-let username = setUsername();
-let password = setPassword();
+//Hàm mã hóa pasword
+function encryptMessage(message) {
+  const a = "abcdefghijklmnopqrstuvwxyz";
+  const b = "zxcvbnmasdfghjklqwertyuiop";
+  let result = "";
+  for (let i = 0; i < message.length; i++) {
+    let char = message[i].toLowerCase(); // tạo biến char chứa kí tự cần mã hóa
+    if (a.includes(char)) {
+      // xem lí tự char có trong chuỗi a không
+      let index = a.indexOf(char);
+      result += b[index];
+    } else {
+      result += char;
+    }
+  }
+  return result;
+}
 //Hàm xuất info
 function displayUserInfo() {
   document.getElementById("demo").innerHTML =
-    "Your username:  " + username + "<br>" + "Your password:  " + password;
+    "Your username:  " +
+    username +
+    "<br>" +
+    "Your encrypted password:  " +
+    encryptMessage(password);
 }
-// Gọi hàm để hiển thị thông tin ngay khi file JavaScript được tải
-displayUserInfo();
 //Hàm đăng nhập ràng buộc sai 5 lần dừng đăng nhập
 let countLogin = 0;
 function login() {
@@ -91,4 +107,10 @@ function login() {
     return true;
   }
 }
+//khai báo biến đựng giá trị password and username
+let username = setUsername();
+let password = setPassword();
+//Đăng nhập bằng username vs password
 login();
+//Hiện thị inf
+displayUserInfo();
