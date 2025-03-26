@@ -1,30 +1,33 @@
-function checkPassword(a) {
-  let aa = false;
-  let aA = false;
-  let a1 = false;
-  for (let i = 0; i < a.length; i++) {
-    if (a[i] >= "a" && a[i] <= "z") {
-      aa = true;
-    }
-    if (a[i] >= "A" && a[i] <= "Z") {
-      aA = true;
-    }
-    if (a[i] >= "0" && a[i] <= "9") {
-      a1 = true;
+/*const a = "tôi đi học, tôi học giỏi, tôi đẹp trai";
+const targetWord = "tôi";
+let count = 0;
+
+for (let i = 0; i < a.length; i++) {
+  if (a.slice(i, i + targetWord.length) === targetWord) {
+    count++;
+  }
+}
+alert(`Số lần lặp của ${targetWord} là ${count} lần`);*/
+function separate(inputString) {
+  let letter = "";
+  let number = "";
+  let countLetter = 0;
+  let countNumber = 0;
+  for (let i = 0; i < inputString.length; i++) {
+    let char = inputString[i];
+    if (isNaN(char)) {
+      letter += char;
+      countLetter++;
+    } else {
+      number += char;
+      countNumber++;
     }
   }
-  return aa && aA && a1 && a.length >= 6;
+  return { letter, number, countLetter, countNumber };
 }
-
-let a = prompt("Mời nhập mật khẩu");
-while (!checkPassword(a)) {
-  alert(` Vui lòng nhập mật khẩu có:
-    1. Ít nhất 1 chữ thường.
-    2. Ít nhất 1 chữ hoa.
-    3. Ít nhất 1 số.
-    4. Ít nhất 6 kí tự.
+let inputString = prompt("Mời nhập chuỗi");
+let result = separate(inputString);
+alert(`
+    Chuỗi chữ: ${result.letter} 
+    Chuỗi số: ${result.number}
     `);
-  a = prompt("Mời nhập lại mật khẩu");
-}
-
-alert("Mật khẩu vừa nhập là " + a);
