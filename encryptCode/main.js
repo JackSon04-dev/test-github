@@ -17,12 +17,12 @@ function setPassword() {
     alert("You canceled the password");
   } else {
     alert(`
-          Please create the password with;
-          1. At least 1 uppercase character.
-          2. At least 1 lowercase character.
-          3. At least 1 number.
-          4. 6 character or more.
-      `);
+            Please create the password with;
+            1. At least 1 uppercase character.
+            2. At least 1 lowercase character.
+            3. At least 1 number.
+            4. 6 character or more.
+        `);
     return setPassword();
   }
 }
